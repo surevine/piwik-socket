@@ -5,6 +5,7 @@ var helper = require('../helper')
   , mockery = require('mockery')
   , PiwikTracker = require('../utils/piwik-tracker')
 
+/* jshint -W030 */
 describe('Piwik Tracking API', function() {
     
     var socket = null
