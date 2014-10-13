@@ -45,5 +45,25 @@ describe('Piwik Tracking API', function() {
         
         stub.callCount.should.equal(1)
     })
+    
+    it('Should send through the correct IP address', function() {
+        var piwik = helper.getValidPiwik(socket)
+        
+        var tracker = sinon.mock(piwik.piwik)
+        var trackExp = tracker.expects('track')
+        
+        trackExp.withExactArgs({
+            action_name: 'Test',
+            cip: '127.0.0.1',
+            url: 'http://localhost/test/test.html'
+        })
+        
+        socket.send('piwik.event', {
+            time: new Date(),
+            title: 'Test',
+            url: 'test.html'
+        })
+        tracker.verify()
+    })
 })
 
