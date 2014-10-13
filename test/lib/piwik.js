@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var helper = require('../helper')
   , should = require('should')
@@ -37,13 +37,13 @@ describe('Piwik Tracking API', function() {
     
     it('Should error if no trackerUrl is provided', function() {
         (function() {
-            var piwik = new Piwik(socket, {siteId: 1})
+            new Piwik(socket, {siteId: 1})
         }).should.throw(Error)
     })
     
     it('Should error if no baseUrl is provided', function() {
         (function() {
-            var piwik = new Piwik(socket, {
+            new Piwik(socket, {
                 siteId: 1, 
                 trackerUrl: 'http://example.com/piwik.php'
             })
@@ -52,7 +52,7 @@ describe('Piwik Tracking API', function() {
     
     it('Should accept a siteId, trackerUrl and baseUrl', function() {
         (function() {
-            var piwik = new Piwik(socket, {
+            new Piwik(socket, {
                 siteId: 1,
                 trackerUrl: 'http://www.example.com/piwik.php',
                 baseUrl: 'http://site.com'
