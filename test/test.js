@@ -10,7 +10,7 @@ var options = {
 }
 
 describe('Piwik Tracking API', function() {
-    var socket, piwik
+    var socket
     
     before(function() {
         socket = new helper.SocketEventer()
@@ -18,19 +18,19 @@ describe('Piwik Tracking API', function() {
     
     it('Should error if no siteId is provided', function() {
         (function() {
-            piwik = new Piwik(socket, {})
+            var piwik = new Piwik(socket, {})
         }).should.throw(Error)
     })
     
     it('Should error if no trackerUrl is provided', function() {
         (function() {
-            piwik = new Piwik(socket, {siteId: 1})
+            var piwik = new Piwik(socket, {siteId: 1})
         }).should.throw(Error)
     })
     
     it('Should accept a siteId and trackerUrl', function() {
         (function() {
-            piwik = new Piwik(socket, {
+            var piwik = new Piwik(socket, {
                 siteId: 1,
                 trackerUrl: 'http://www.example.com/piwik.php'
             })
@@ -38,10 +38,8 @@ describe('Piwik Tracking API', function() {
     })
     
     it('Should call track', function() {
-        var piwik = new Piwik(socket, {
-                siteId: 1,
-                trackerUrl: 'http://www.example.com/piwik.php'
-            })
+        var piwik = helper.getValidPiwik(socket)
+        
         var stub = sinon.stub(piwik.piwik, 'track')
         socket.send('piwik.event', {})
         
