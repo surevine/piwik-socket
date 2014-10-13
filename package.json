@@ -4,7 +4,7 @@
   "description": "A socket wrapper for the Piwik tracking API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,9 @@
     "grunt-mocha-cli": "^1.10.0",
     "mocha": "^1.21.5",
     "should": "^4.0.4",
-    "sinon": "^1.10.3"
+    "sinon": "^1.10.3",
+    "coveralls": "^2.11.2",
+    "mocha-istanbul": "^0.2.0",
+    "grunt-contrib-jshint": "^0.10.0"
   }
 }
