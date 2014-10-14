@@ -5,6 +5,9 @@ var Event  = require('events').EventEmitter
 var SocketEventer = function() {}
 SocketEventer.prototype = new Event()
 SocketEventer.prototype.send = function(event, data, callback) {
+    if ( !callback )
+        callback = function() {}
+    
     this.emit(event, data, callback)
 }
 
