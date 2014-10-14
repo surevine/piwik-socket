@@ -32,7 +32,7 @@ describe('Piwik Tracking API', function() {
     /*jshint -W068 */
     it('Should error if no siteId is provided', function() {
         (function() {
-            var piwik = new Piwik(socket, {})
+            new Piwik(socket, {})
         }).should.throw(Error)
     })
     
