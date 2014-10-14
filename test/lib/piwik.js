@@ -29,18 +29,21 @@ describe('Piwik Tracking API', function() {
         mockery.disable()
     })
     
+    /*jshint -W068 */
     it('Should error if no siteId is provided', function() {
         (function() {
             var piwik = new Piwik(socket, {})
         }).should.throw(Error)
     })
     
+    /*jshint -W068 */
     it('Should error if no trackerUrl is provided', function() {
         (function() {
             new Piwik(socket, {siteId: 1})
         }).should.throw(Error)
     })
     
+    /*jshint -W068 */
     it('Should error if no baseUrl is provided', function() {
         (function() {
             new Piwik(socket, {
@@ -50,6 +53,7 @@ describe('Piwik Tracking API', function() {
         }).should.throw(Error)
     })
     
+    /*jshint -W068 */
     it('Should accept a siteId, trackerUrl and baseUrl', function() {
         (function() {
             new Piwik(socket, {
