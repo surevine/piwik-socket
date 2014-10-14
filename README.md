@@ -1,4 +1,4 @@
-statsc-socket
+piwik-socket
 ===============
 
 An event emitter interface to [Piwik](https://piwik.org).
