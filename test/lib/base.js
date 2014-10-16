@@ -166,4 +166,25 @@ describe('Piwik Tracking API - Base functionality', function() {
         payload._rcn.should.equal('Test Campaign')
         payload._rck.should.equal('test')
     })
+    
+    it('Should encode custom variables properly', function() {
+        var pwk = new Piwik(socket, helper.getPiwikOptions(socket))
+        var custom = {
+            "1": ['Test', 'value'],
+            "2": ['Another', 'test']
+        }
+        
+        socket.send('piwik.track', {
+            title: 'Test',
+            url: 'test.html',
+            custom: custom
+        })
+        
+        pwk.piwik.trackCalled.should.be.true
+        pwk.piwik.trackCalls.should.equal(1)
+        
+        var payload = pwk.piwik.latestPayload
+        payload.cvar.should.exist
+        payload.cvar.should.equal(JSON.stringify(custom))
+    })
 })
